@@ -48,8 +48,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
-    val data = listOf("Senin","Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
-    val dataPerson = ArrayList<Person>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,130 +56,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxWidth()
             ){
-                addDataPerson()
-                customList()
-            }
-        }
-    }
-
-    @Composable
-    fun text1() {
-        Column(
-            modifier = Modifier
-                .background(Color.Blue)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly//jarak vertical
-        ) {
-                Text("Kotlin")
-                Text("Asik")
-        }
-    }
-
-    @Composable
-    fun textAndButton() {
-        //create text and button
-        Column (
-            modifier = Modifier
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Text(text = "Hello Kamu Sangat Pintar Sekali",
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Green
-                ),
-                modifier = Modifier
-                    .padding(bottom = 20.dp) //outer padding(margin)
-                    .background(Color.Gray)
-                    .padding(14.dp) //inner padding
-            )
-            Button(onClick = { /*TODO*/ },
-                shape =  RoundedCornerShape(14.dp),
-            ) {
-                Text(text = "Oke")
-            }
-        }
-    }
-
-    @Composable
-    fun showImage() {
-        Image(
-            painter = painterResource(id = R.drawable.steve_jobs),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(160.dp)
-                .clip(CircleShape) // clip to the circle shape
-                .border(4.dp, Color.Blue, CircleShape)
-                .background(Color.White)
-            )
-    }
-
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun useTextField() {
-        var text by remember { mutableStateOf(TextFieldValue("")) } //listener
-        OutlinedTextField(
-            value = text,
-            onValueChange = {text = it},
-            label = { Text("Number Phone") },
-            placeholder = { Text("Input here") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
-        )
-    }
-
-    @Composable
-    fun simpleList() {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
-        ){
-            items(data) { value ->
-                Text(text = "Ini hari $value", color = Color.Black)
-            }
-        }
-    }
-
-    @Composable
-    fun listRowCustom(person: Person) {
-        Row(
-            modifier = Modifier
-                .padding(bottom = 4.dp)
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .background(Color.Gray),
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            Image(
-                painter = painterResource(id = person.image),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .size(80.dp)
-            )
-            Text(text = person.text, color = Color.White)
-        }
-    }
-
-    fun addDataPerson() {
-        dataPerson.add(Person(R.drawable.steve_jobs, "text1"))
-        dataPerson.add(Person(R.drawable.steve_jobs, "text2"))
-        dataPerson.add(Person(R.drawable.steve_jobs, "text3"))
-        dataPerson.add(Person(R.drawable.steve_jobs, "text4"))
-    }
-
-    @Composable
-    fun customList() {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            items(dataPerson) {item ->
-                listRowCustom(person = item)
+                //write code
             }
         }
     }
