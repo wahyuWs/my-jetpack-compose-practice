@@ -16,7 +16,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -45,16 +48,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
+    val data = listOf("Senin","Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
+    val dataPerson = ArrayList<Person>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Row (
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                    .fillMaxWidth()
             ){
-                useTextField()
+                addDataPerson()
+                customList()
             }
         }
     }
@@ -127,11 +132,66 @@ class MainActivity : ComponentActivity() {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
         )
     }
+
+    @Composable
+    fun simpleList() {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)
+        ){
+            items(data) { value ->
+                Text(text = "Ini hari $value", color = Color.Black)
+            }
+        }
+    }
+
+    @Composable
+    fun listRowCustom(person: Person) {
+        Row(
+            modifier = Modifier
+                .padding(bottom = 4.dp)
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .background(Color.Gray),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Image(
+                painter = painterResource(id = person.image),
+                contentDescription = null,
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier
+                    .size(80.dp)
+            )
+            Text(text = person.text, color = Color.White)
+        }
+    }
+
+    fun addDataPerson() {
+        dataPerson.add(Person(R.drawable.steve_jobs, "text1"))
+        dataPerson.add(Person(R.drawable.steve_jobs, "text2"))
+        dataPerson.add(Person(R.drawable.steve_jobs, "text3"))
+        dataPerson.add(Person(R.drawable.steve_jobs, "text4"))
+    }
+
+    @Composable
+    fun customList() {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            items(dataPerson) {item ->
+                listRowCustom(person = item)
+            }
+        }
+    }
 }
 
 /*
  * Column, membuat item menjadi vertical
  * Row, item menjadi horizontal
+ * LazyColumn - Vertical RecyclerView
+ * LazyRow - Horizontal RecyclerView
  * Modifier set :
  *              background(Color.Blue) - mengatur warna background column dan row
  *              fillMaxSize() - mengatur ukuran column ke max layar, default ukuran column menyesuaikan content
