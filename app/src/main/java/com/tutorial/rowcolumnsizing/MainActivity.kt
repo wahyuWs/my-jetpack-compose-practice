@@ -11,11 +11,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -52,6 +54,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -72,11 +75,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             Column (
                 modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxWidth(0.5f)
+                    .padding(14.dp),
             ){
                 //call function here
-
             }
         }
     }
@@ -88,13 +90,16 @@ class MainActivity : ComponentActivity() {
  * Column, membuat item menjadi vertical
  * Row, item menjadi horizontal
  * LazyColumn - Vertical RecyclerView
+ * box(){} - membuat item menumpuk
  * LazyRow - Horizontal RecyclerView
+ * spacer(Modifier.height(50.dp)) - seperti margin atau memberi batas height
  * Modifier set :
  *              background(Color.Blue) - mengatur warna background column dan row
  *              fillMaxSize() - mengatur ukuran column ke max layar, default ukuran column menyesuaikan content
  *              fillMaxSize(0.5f) - mengatur ukuran column atau row menjadi width dan height menjadi 50%
  *              width(200.dp) - mengatur ukuran width menjadi 200dp
  *              height(200.dp) - mengatur ukuran height menjadi 200dp
+ *              offset(20.dp, 20.dp) mengatur posisi item berdasarkan x dan y
  * horizontal dan vertical set :
  *              horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center - mengatur content center horizontal dan vertical
 **/
