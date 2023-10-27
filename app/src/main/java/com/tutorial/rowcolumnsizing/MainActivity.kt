@@ -58,12 +58,18 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -73,13 +79,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column (
-                modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .padding(14.dp),
-            ){
-                //call function here
-            }
+
         }
     }
 
@@ -91,6 +91,7 @@ class MainActivity : ComponentActivity() {
  * Row, item menjadi horizontal
  * LazyColumn - Vertical RecyclerView
  * box(){} - membuat item menumpuk
+ * buildAnnotatedString - membuat style teks berbeda dengan withstyle dan menerapkan dengan append()
  * LazyRow - Horizontal RecyclerView
  * spacer(Modifier.height(50.dp)) - seperti margin atau memberi batas height
  * Modifier set :
