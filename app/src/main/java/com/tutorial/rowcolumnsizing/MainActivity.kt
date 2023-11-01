@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -75,6 +76,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -90,7 +92,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+@Preview
+@Composable
+fun PreviewDesign() {
+}
 
 
 
@@ -98,9 +103,9 @@ class MainActivity : ComponentActivity() {
  * Column, membuat item menjadi vertical
  * Row, item menjadi horizontal
  * LazyColumn - Vertical RecyclerView
+ * LazyRow - Horizontal RecyclerView
  * box(){} - membuat item menumpuk
  * buildAnnotatedString - membuat style teks berbeda dengan withstyle dan menerapkan dengan append()
- * LazyRow - Horizontal RecyclerView
  * spacer(Modifier.height(50.dp)) - seperti margin atau memberi batas height
  * Modifier set :
  *              background(Color.Blue) - mengatur warna background column dan row
