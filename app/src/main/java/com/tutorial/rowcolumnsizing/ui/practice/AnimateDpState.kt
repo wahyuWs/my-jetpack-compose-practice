@@ -1,6 +1,8 @@
 package com.tutorial.rowcolumnsizing.ui.practice
 
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
@@ -25,7 +27,10 @@ import com.tutorial.rowcolumnsizing.R
 fun animationWithAnimateDpState() {
     val sizeStatus = rememberSaveable{ mutableStateOf(false) }
 
-    val animateSizeDp: Dp by animateDpAsState(targetValue = if (sizeStatus.value) 350.dp else 100.dp)
+    val animateSizeDp: Dp by animateDpAsState(
+        targetValue = if (sizeStatus.value) 350.dp else 100.dp,
+        spring(Spring.DampingRatioHighBouncy) //tipe animasi
+    )
     Image(
         painter = painterResource(id = R.drawable.steve_jobs),
         contentDescription = null,
